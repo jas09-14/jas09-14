@@ -58,7 +58,7 @@ const Dashboard = () => {
   const categoryData = summary?.category_summary
     ? Object.values(summary.category_summary).map(cat => ({
         name: cat.name,
-        value: cat.actual,
+        value: parseFloat(cat.actual.toFixed(2)),
         color: cat.color
       }))
     : [];
