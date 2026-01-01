@@ -101,22 +101,22 @@ const Dashboard = () => {
         <p className="text-muted-foreground mt-1">Visão geral das suas finanças em {currentYear}</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
           return (
             <div
               key={index}
               data-testid={`stat-card-${index}`}
-              className="bg-card rounded-2xl border border-border/50 p-6 shadow-soft hover-lift transition-smooth"
+              className="bg-card rounded-2xl border border-border/50 p-4 sm:p-6 shadow-soft hover-lift transition-smooth"
             >
               <div className="flex items-start justify-between">
-                <div>
-                  <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{stat.title}</p>
-                  <p className="text-2xl font-semibold font-mono mt-2 text-foreground">{stat.value}</p>
+                <div className="flex-1">
+                  <p className="text-xs sm:text-sm font-medium text-muted-foreground uppercase tracking-wider">{stat.title}</p>
+                  <p className="text-lg sm:text-2xl font-semibold font-mono mt-2 text-foreground break-words">{stat.value}</p>
                 </div>
-                <div className={`${stat.bg} p-3 rounded-lg`}>
-                  <Icon className={`w-6 h-6 ${stat.color}`} />
+                <div className={`${stat.bg} p-2 sm:p-3 rounded-lg flex-shrink-0`}>
+                  <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${stat.color}`} />
                 </div>
               </div>
             </div>
