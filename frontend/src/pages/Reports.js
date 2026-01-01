@@ -151,13 +151,13 @@ const Reports = () => {
             <div className="flex justify-between items-center py-2 border-b border-border/50">
               <span className="text-muted-foreground">Total Planejado</span>
               <span className="font-mono font-semibold text-foreground">
-                R$ {(summary?.total_planned || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                R$ {(summary?.total_planned || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-border/50">
               <span className="text-muted-foreground">Total Realizado</span>
               <span className="font-mono font-semibold text-foreground">
-                R$ {(summary?.total_actual || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                R$ {(summary?.total_actual || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
             <div className="flex justify-between items-center py-2">
@@ -168,7 +168,7 @@ const Reports = () => {
                 }`}
               >
                 {(summary?.total_actual || 0) > (summary?.total_planned || 0) ? '+' : ''}
-                R$ {Math.abs((summary?.total_planned || 0) - (summary?.total_actual || 0)).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                R$ {Math.abs((summary?.total_planned || 0) - (summary?.total_actual || 0)).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </span>
             </div>
           </div>
