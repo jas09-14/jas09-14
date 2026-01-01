@@ -48,7 +48,9 @@ const Incomes = () => {
   };
 
   const handleValueChange = (field, value) => {
-    const numValue = value === '' ? 0 : parseFloat(value) || 0;
+    // Remove formatação e converte para número
+    const cleanValue = value.replace(/\./g, '').replace(',', '.');
+    const numValue = cleanValue === '' ? 0 : parseFloat(cleanValue) || 0;
     
     setIncomes(prev => ({
       ...prev,
