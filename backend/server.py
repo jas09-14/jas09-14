@@ -85,6 +85,36 @@ class BudgetCreate(BaseModel):
     monthly_target: float
 
 
+class Income(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    month: int
+    year: int
+    aposentadoria: float
+    salario: float
+    recursos_externos: float
+    notes: Optional[str] = None
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+
+class IncomeCreate(BaseModel):
+    month: int
+    year: int
+    aposentadoria: float
+    salario: float
+    recursos_externos: float
+    notes: Optional[str] = None
+
+
+class IncomeUpdate(BaseModel):
+    aposentadoria: Optional[float] = None
+    salario: Optional[float] = None
+    recursos_externos: Optional[float] = None
+    notes: Optional[str] = None
+
+
 @api_router.get("/")
 async def root():
     return {"message": "Finance Control API"}
