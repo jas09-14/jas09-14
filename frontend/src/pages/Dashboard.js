@@ -66,21 +66,21 @@ const Dashboard = () => {
   const stats = [
     {
       title: 'Total Planejado',
-      value: `R$ ${(summary?.total_planned || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`,
+      value: `R$ ${(summary?.total_planned || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
       icon: Target,
       color: 'text-blue-600',
       bg: 'bg-blue-50'
     },
     {
       title: 'Total Realizado',
-      value: `R$ ${(summary?.total_actual || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`,
+      value: `R$ ${(summary?.total_actual || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
       icon: Wallet,
       color: 'text-green-600',
       bg: 'bg-green-50'
     },
     {
       title: 'Diferença',
-      value: `R$ ${Math.abs((summary?.total_planned || 0) - (summary?.total_actual || 0)).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`,
+      value: `R$ ${Math.abs((summary?.total_planned || 0) - (summary?.total_actual || 0)).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
       icon: (summary?.total_actual || 0) > (summary?.total_planned || 0) ? TrendingUp : TrendingDown,
       color: (summary?.total_actual || 0) > (summary?.total_planned || 0) ? 'text-red-600' : 'text-green-600',
       bg: (summary?.total_actual || 0) > (summary?.total_planned || 0) ? 'bg-red-50' : 'bg-green-50'
