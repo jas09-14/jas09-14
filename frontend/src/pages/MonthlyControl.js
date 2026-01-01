@@ -222,15 +222,15 @@ const MonthlyControl = () => {
               <tr className="bg-accent/30 font-semibold">
                 <td colSpan="2" className="py-4 px-4 text-foreground">TOTAL</td>
                 <td className="py-4 px-4 text-right font-mono text-foreground" data-testid="total-planned">
-                  R$ {getTotalPlanned().toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                  R$ {getTotalPlanned().toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </td>
                 <td className="py-4 px-4 text-right font-mono text-foreground" data-testid="total-actual">
-                  R$ {getTotalActual().toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                  R$ {getTotalActual().toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </td>
                 <td className="py-4 px-4 text-right font-mono text-foreground">
                   <span className={(getTotalActual() - getTotalPlanned()) > 0 ? 'text-red-600' : 'text-green-600'}>
                     {(getTotalActual() - getTotalPlanned()) > 0 ? '+' : ''}
-                    {(getTotalActual() - getTotalPlanned()).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                    {(getTotalActual() - getTotalPlanned()).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                   </span>
                 </td>
               </tr>
