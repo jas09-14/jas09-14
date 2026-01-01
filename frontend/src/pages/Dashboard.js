@@ -72,28 +72,28 @@ const Dashboard = () => {
   const stats = [
     {
       title: 'Total Planejado',
-      value: `R$ ${(summary?.total_planned || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      value: formatBRL(summary?.total_planned || 0),
       icon: Target,
       color: 'text-blue-600',
       bg: 'bg-blue-50'
     },
     {
       title: 'Total Realizado',
-      value: `R$ ${(summary?.total_actual || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      value: formatBRL(summary?.total_actual || 0),
       icon: Wallet,
       color: 'text-green-600',
       bg: 'bg-green-50'
     },
     {
       title: 'Total Receitas',
-      value: `R$ ${(summary?.total_income || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      value: formatBRL(summary?.total_income || 0),
       icon: TrendingUp,
       color: 'text-emerald-600',
       bg: 'bg-emerald-50'
     },
     {
       title: 'Saldo Anual',
-      value: `R$ ${Math.abs((summary?.balance || 0)).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      value: formatBRL(Math.abs(summary?.balance || 0)),
       icon: (summary?.balance || 0) >= 0 ? TrendingUp : TrendingDown,
       color: (summary?.balance || 0) >= 0 ? 'text-green-600' : 'text-red-600',
       bg: (summary?.balance || 0) >= 0 ? 'bg-green-50' : 'bg-red-50'
