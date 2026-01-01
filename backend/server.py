@@ -263,16 +263,27 @@ async def get_budgets(year: Optional[int] = None):
 @api_router.get("/summary/{year}")
 async def get_year_summary(year: int):
     transactions = await db.transactions.find({"year": year}, {"_id": 0}).to_list(1000)
+    incomes = await db.incomes.find({"year": year}, {"_id": 0}).to_list(100)
     
     total_planned = sum(t['planned_value'] for t in transactions)
     total_actual = sum(t['actual_value'] for t in transactions)
     
+    # Calcular receitas totais
+    total_income = sum((i['aposentadoria'] + i['salario'] + i['recursos_externos']) for i in incomes)
+    
     monthly_summary = {}
     for month in range(1, 13):
         month_trans = [t for t in transactions if t['month'] == month]
+        month_income = [i for i in incomes if i['month'] == month]
+        
+        despesas = sum(t['actual_value'] for t in month_trans)
+        receitas = sum((i['aposentadoria'] + i['salario'] + i['recursos_externos']) for i in month_income)
+        
         monthly_summary[month] = {
             "planned": sum(t['planned_value'] for t in month_trans),
-            "actual": sum(t['actual_value'] for t in month_trans)
+            "actual": despesas,
+            "income": receitas,
+            "balance": receitas - despesas
         }
     
     category_summary = {}
@@ -291,6 +302,8 @@ async def get_year_summary(year: int):
         "year": year,
         "total_planned": total_planned,
         "total_actual": total_actual,
+        "total_income": total_income,
+        "balance": total_income - total_actual,
         "monthly_summary": monthly_summary,
         "category_summary": category_summary
     }
