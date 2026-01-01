@@ -106,6 +106,46 @@ const Dashboard = () => {
         <p className="text-muted-foreground mt-1">Visão geral das suas finanças em {currentYear}</p>
       </div>
 
+      {/* Seção Mês Corrente */}
+      <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl border border-primary/20 p-6 shadow-lg">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-semibold text-primary capitalize">Mês Corrente: {currentMonthName}</h3>
+          <span className="text-sm text-muted-foreground">Mês {currentMonth}/12</span>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="bg-white/80 backdrop-blur rounded-xl p-4 border border-border/50">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-2 h-2 rounded-full bg-green-500"></div>
+              <p className="text-sm font-medium text-muted-foreground uppercase">Receitas</p>
+            </div>
+            <p className="text-2xl font-semibold font-mono text-green-600">
+              R$ {currentMonthData.income.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            </p>
+          </div>
+
+          <div className="bg-white/80 backdrop-blur rounded-xl p-4 border border-border/50">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-2 h-2 rounded-full bg-red-500"></div>
+              <p className="text-sm font-medium text-muted-foreground uppercase">Despesas</p>
+            </div>
+            <p className="text-2xl font-semibold font-mono text-red-600">
+              R$ {currentMonthData.actual.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            </p>
+          </div>
+
+          <div className="bg-white/80 backdrop-blur rounded-xl p-4 border border-border/50">
+            <div className="flex items-center gap-2 mb-2">
+              <div className={`w-2 h-2 rounded-full ${currentMonthData.balance >= 0 ? 'bg-emerald-500' : 'bg-orange-500'}`}></div>
+              <p className="text-sm font-medium text-muted-foreground uppercase">Saldo</p>
+            </div>
+            <p className={`text-2xl font-semibold font-mono ${currentMonthData.balance >= 0 ? 'text-emerald-600' : 'text-orange-600'}`}>
+              {currentMonthData.balance >= 0 ? '+' : '-'} R$ {Math.abs(currentMonthData.balance).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((stat, index) => {
           const Icon = stat.icon;
