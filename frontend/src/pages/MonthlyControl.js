@@ -216,7 +216,7 @@ const MonthlyControl = () => {
                     </td>
                     <td className="py-4 px-4 text-right font-mono">
                       <span className={diff > 0 ? 'text-red-600' : diff < 0 ? 'text-green-600' : 'text-muted-foreground'}>
-                        {diff > 0 ? '+' : ''}{diff.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        {diff > 0 ? '+' : ''}{formatCurrency(diff)}
                       </span>
                     </td>
                   </tr>
