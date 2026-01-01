@@ -47,6 +47,11 @@ const Dashboard = () => {
     );
   }
 
+  // Determinar mês corrente (Janeiro = 1)
+  const currentMonth = new Date().getMonth() + 1;
+  const currentMonthData = summary?.monthly_summary?.[currentMonth] || { planned: 0, actual: 0, income: 0, balance: 0 };
+  const currentMonthName = format(new Date(currentYear, currentMonth - 1), 'MMMM', { locale: ptBR });
+
   const monthlyData = summary?.monthly_summary
     ? Object.entries(summary.monthly_summary).map(([month, data]) => ({
         month: format(new Date(currentYear, parseInt(month) - 1), 'MMM', { locale: ptBR }),
