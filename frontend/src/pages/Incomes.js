@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 import { Save, ChevronLeft, ChevronRight, TrendingUp, TrendingDown } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { formatBRL } from '../lib/formatters';
+import { formatBRL, formatCurrency } from '../lib/formatters';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
