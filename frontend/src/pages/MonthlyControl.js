@@ -50,6 +50,8 @@ const MonthlyControl = () => {
 
   const handleValueChange = (categoryId, field, value) => {
     const key = `${categoryId}-${selectedMonth}`;
+    const numValue = value === '' ? 0 : parseFloat(value) || 0;
+    
     setTransactions(prev => ({
       ...prev,
       [key]: {
@@ -57,9 +59,9 @@ const MonthlyControl = () => {
         category_id: categoryId,
         month: selectedMonth,
         year: currentYear,
-        [field]: value === '' ? 0 : parseFloat(value) || 0,
-        planned_value: field === 'planned_value' ? (value === '' ? 0 : parseFloat(value) || 0) : (prev[key]?.planned_value || 0),
-        actual_value: field === 'actual_value' ? (value === '' ? 0 : parseFloat(value) || 0) : (prev[key]?.actual_value || 0)
+        [field]: parseFloat(numValue.toFixed(2)),
+        planned_value: field === 'planned_value' ? parseFloat(numValue.toFixed(2)) : parseFloat((prev[key]?.planned_value || 0).toFixed(2)),
+        actual_value: field === 'actual_value' ? parseFloat(numValue.toFixed(2)) : parseFloat((prev[key]?.actual_value || 0).toFixed(2))
       }
     }));
   };
