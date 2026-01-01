@@ -196,24 +196,22 @@ const MonthlyControl = () => {
                     </td>
                     <td className="py-4 px-4">
                       <input
-                        type="number"
-                        step="0.01"
-                        value={trans.planned_value || ''}
+                        type="text"
+                        value={trans.planned_value ? formatCurrency(trans.planned_value) : ''}
                         onChange={(e) => handleValueChange(category.id, 'planned_value', e.target.value)}
                         data-testid={`planned-input-${category.id}`}
                         className="w-full text-right bg-transparent border-b border-border focus:border-primary focus:outline-none px-2 py-1 font-mono text-foreground transition-colors"
-                        placeholder="0.00"
+                        placeholder="0,00"
                       />
                     </td>
                     <td className="py-4 px-4">
                       <input
-                        type="number"
-                        step="0.01"
-                        value={trans.actual_value || ''}
+                        type="text"
+                        value={trans.actual_value ? formatCurrency(trans.actual_value) : ''}
                         onChange={(e) => handleValueChange(category.id, 'actual_value', e.target.value)}
                         data-testid={`actual-input-${category.id}`}
                         className="w-full text-right bg-transparent border-b border-border focus:border-primary focus:outline-none px-2 py-1 font-mono text-foreground transition-colors"
-                        placeholder="0.00"
+                        placeholder="0,00"
                       />
                     </td>
                     <td className="py-4 px-4 text-right font-mono">
