@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 import { LayoutDashboard, Calendar, DollarSign, FolderOpen, BarChart3, Menu, X } from 'lucide-react';
 
 const Layout = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  // Fechar menu ao clicar fora
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    if (mobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
 
   const navItems = [
     { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -15,7 +33,7 @@ const Layout = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-white border-b border-border/50 sticky top-0 z-50 shadow-soft">
+      <header className="bg-white border-b border-border/50 sticky top-0 z-50 shadow-soft" ref={menuRef}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <div>
@@ -56,7 +74,7 @@ const Layout = () => {
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <nav className="lg:hidden mt-4 pb-2 space-y-1">
+            <nav className="lg:hidden mt-4 pb-2 space-y-1 animate-in fade-in slide-in-from-top-4 duration-200">
               {navItems.map((item) => (
                 <NavLink
                   key={item.to}
