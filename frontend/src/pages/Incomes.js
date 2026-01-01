@@ -144,13 +144,13 @@ const Incomes = () => {
         <div className="bg-card rounded-xl border border-border/50 p-4 sm:p-6 shadow-soft">
           <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Total Receitas</p>
           <p className="text-xl sm:text-2xl font-semibold font-mono mt-2 text-green-600">
-            R$ {getTotalIncome().toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            {formatBRL(getTotalIncome())}
           </p>
         </div>
         <div className="bg-card rounded-xl border border-border/50 p-4 sm:p-6 shadow-soft">
           <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Total Despesas</p>
           <p className="text-xl sm:text-2xl font-semibold font-mono mt-2 text-red-600">
-            R$ {getMonthExpenses().toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            {formatBRL(getMonthExpenses())}
           </p>
         </div>
         <div className="bg-card rounded-xl border border-border/50 p-4 sm:p-6 shadow-soft">
@@ -159,7 +159,7 @@ const Incomes = () => {
             {balance > 0 ? <TrendingUp className="w-4 h-4 text-green-600" /> : <TrendingDown className="w-4 h-4 text-red-600" />}
           </p>
           <p className={`text-xl sm:text-2xl font-semibold font-mono mt-2 ${balance >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-            R$ {Math.abs(balance).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+            {formatBRL(Math.abs(balance))}
           </p>
         </div>
       </div>
