@@ -4,6 +4,7 @@ import { Toaster } from './components/ui/sonner';
 import Dashboard from './pages/Dashboard';
 import MonthlyControl from './pages/MonthlyControl';
 import Categories from './pages/Categories';
+import Incomes from './pages/Incomes';
 import Reports from './pages/Reports';
 import Layout from './components/Layout';
 import './App.css';
