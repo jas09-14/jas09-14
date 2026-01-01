@@ -343,6 +343,80 @@ async def init_default_categories():
     return {"message": f"Initialized {len(default_categories)} default categories"}
 
 
+@api_router.post("/incomes", response_model=Income)
+async def create_income(input: IncomeCreate):
+    income = Income(**input.model_dump())
+    doc = income.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    doc['updated_at'] = doc['updated_at'].isoformat()
+    
+    await db.incomes.insert_one(doc)
+    return income
+
+
+@api_router.get("/incomes", response_model=List[Income])
+async def get_incomes(year: Optional[int] = None):
+    query = {}
+    if year:
+        query["year"] = year
+    
+    incomes = await db.incomes.find(query, {"_id": 0}).to_list(1000)
+    
+    for income in incomes:
+        if isinstance(income['created_at'], str):
+            income['created_at'] = datetime.fromisoformat(income['created_at'])
+        if isinstance(income['updated_at'], str):
+            income['updated_at'] = datetime.fromisoformat(income['updated_at'])
+    
+    return incomes
+
+
+@api_router.put("/incomes/{income_id}", response_model=Income)
+async def update_income(income_id: str, input: IncomeUpdate):
+    update_doc = input.model_dump(exclude_none=True)
+    update_doc['updated_at'] = datetime.now(timezone.utc).isoformat()
+    
+    result = await db.incomes.update_one(
+        {"id": income_id},
+        {"$set": update_doc}
+    )
+    
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Income not found")
+    
+    income = await db.incomes.find_one({"id": income_id}, {"_id": 0})
+    if isinstance(income['created_at'], str):
+        income['created_at'] = datetime.fromisoformat(income['created_at'])
+    if isinstance(income['updated_at'], str):
+        income['updated_at'] = datetime.fromisoformat(income['updated_at'])
+    
+    return Income(**income)
+
+
+@api_router.delete("/incomes/{income_id}")
+async def delete_income(income_id: str):
+    result = await db.incomes.delete_one({"id": income_id})
+    
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Income not found")
+    
+    return {"message": "Income deleted successfully"}
+
+
+@api_router.post("/reset-actual-values")
+async def reset_actual_values():
+    """Zera todos os valores realizados mantendo os planejados"""
+    result = await db.transactions.update_many(
+        {},
+        {"$set": {"actual_value": 0}}
+    )
+    
+    return {
+        "message": "Valores realizados zerados com sucesso",
+        "modified_count": result.modified_count
+    }
+
+
 app.include_router(api_router)
 
 app.add_middleware(
