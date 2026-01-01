@@ -18,6 +18,7 @@ function App() {
             <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="monthly" element={<MonthlyControl />} />
+            <Route path="incomes" element={<Incomes />} />
             <Route path="categories" element={<Categories />} />
             <Route path="reports" element={<Reports />} />
           </Route>
