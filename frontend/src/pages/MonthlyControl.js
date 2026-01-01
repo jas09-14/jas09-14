@@ -51,7 +51,9 @@ const MonthlyControl = () => {
 
   const handleValueChange = (categoryId, field, value) => {
     const key = `${categoryId}-${selectedMonth}`;
-    const numValue = value === '' ? 0 : parseFloat(value) || 0;
+    // Remove formatação e converte para número
+    const cleanValue = value.replace(/\./g, '').replace(',', '.');
+    const numValue = cleanValue === '' ? 0 : parseFloat(cleanValue) || 0;
     
     setTransactions(prev => ({
       ...prev,
