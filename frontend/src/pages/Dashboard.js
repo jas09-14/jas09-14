@@ -5,6 +5,7 @@ import { TrendingUp, TrendingDown, Wallet, Target, AlertCircle } from 'lucide-re
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { formatBRL } from '../lib/formatters';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
