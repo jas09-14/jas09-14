@@ -1,0 +1,137 @@
+{
+  "identity": {
+    "name": "E1",
+    "archetype": "Soft Utility",
+    "vibe": "Calm, Organized, Clarity-First",
+    "principles": [
+      "Fusion: Spreadsheet power meets Spa-like calm",
+      "Emotion: Financial peace of mind",
+      "Content: Data is the hero, UI is the whisper",
+      "Zoom: Focus on the current month/category",
+      "Negative Space: Generous padding to reduce cognitive load"
+    ]
+  },
+  "typography": {
+    "primary_font": "Manrope",
+    "secondary_font": "Inter",
+    "mono_font": "JetBrains Mono",
+    "usage": {
+      "headings": "Manrope, font-semibold, tracking-tight, text-primary",
+      "body": "Inter, font-normal, text-muted-foreground",
+      "numbers": "JetBrains Mono, font-medium, tabular-nums",
+      "labels": "Inter, font-medium, uppercase, tracking-wider, text-xs"
+    },
+    "scale": {
+      "h1": "text-4xl md:text-5xl",
+      "h2": "text-3xl",
+      "h3": "text-2xl",
+      "body": "text-base",
+      "small": "text-sm"
+    }
+  },
+  "colors": {
+    "palette": {
+      "background": "hsl(0 0% 98%)",
+      "foreground": "hsl(220 14% 20%)",
+      "card": "hsl(0 0% 100%)",
+      "card_foreground": "hsl(220 14% 20%)",
+      "primary": "hsl(220 14% 20%)",
+      "primary_foreground": "hsl(0 0% 98%)",
+      "muted": "hsl(220 14% 96%)",
+      "muted_foreground": "hsl(220 14% 45%)",
+      "border": "hsl(220 13% 91%)",
+      "input": "hsl(220 13% 91%)",
+      "ring": "hsl(220 14% 80%)"
+    },
+    "category_colors": [
+      "#FFADAD", "#FFD6A5", "#FDFFB6", "#CAFFBF", 
+      "#9BF6FF", "#A0C4FF", "#BDB2FF", "#FFC6FF",
+      "#E5E5E5", "#F4A261", "#2A9D8F", "#E9C46A",
+      "#F4A261", "#E76F51", "#8ECAE6", "#219EBC"
+    ],
+    "gradients": "NONE. Use solid colors or extremely subtle noise textures.",
+    "status": {
+      "success": "hsl(142 76% 36%)",
+      "warning": "hsl(48 96% 53%)",
+      "error": "hsl(0 84% 60%)",
+      "info": "hsl(217 91% 60%)"
+    }
+  },
+  "layout": {
+    "grid_system": {
+      "dashboard": "grid grid-cols-1 md:grid-cols-12 gap-6",
+      "monthly_view": "grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4",
+      "card_internal": "flex flex-col gap-4 p-6"
+    },
+    "spacing": {
+      "container_padding": "p-6 md:p-12",
+      "section_gap": "gap-8 md:gap-12",
+      "item_gap": "gap-4"
+    },
+    "radius": {
+      "default": "rounded-xl",
+      "card": "rounded-2xl",
+      "button": "rounded-lg"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm h-10 px-6",
+      "secondary": "bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-6",
+      "ghost": "hover:bg-accent hover:text-accent-foreground"
+    },
+    "cards": {
+      "style": "bg-card border border-border/50 shadow-sm hover:shadow-md transition-all duration-300",
+      "padding": "p-6"
+    },
+    "inputs": {
+      "style": "bg-transparent border-b border-border focus:border-primary focus:ring-0 rounded-none px-0 h-10 transition-colors",
+      "note": "Use 'flushed' style inputs for the spreadsheet feel, standard bordered inputs for forms."
+    },
+    "charts": {
+      "library": "recharts",
+      "style": "Minimalist, thin lines, soft fills. No grid lines unless necessary."
+    }
+  },
+  "visual_enhancers": {
+    "shadows": "shadow-[0_2px_8px_rgba(0,0,0,0.04)]",
+    "glassmorphism": "backdrop-blur-md bg-white/70 border-white/20 (Use sparingly for sticky headers)",
+    "textures": "Subtle noise overlay on the main background (opacity 0.02)",
+    "animations": {
+      "hover": "transform hover:-translate-y-1 transition-transform duration-200",
+      "enter": "animate-in fade-in slide-in-from-bottom-4 duration-500"
+    }
+  },
+  "assets": {
+    "icons": "lucide-react",
+    "images": [
+      {
+        "category": "welcome_hero",
+        "url": "https://images.unsplash.com/photo-1762652345565-e38e420b6f30?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwYWJzdHJhY3QlMjAzZCUyMHNoYXBlcyUyMHNvZnQlMjBwYXN0ZWwlMjBjb2xvcnN8ZW58MHx8fHwxNzY3Mjg0NTA4fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Soft pastel spheres for welcome screen or empty state"
+      },
+      {
+        "category": "empty_state",
+        "url": "https://images.unsplash.com/photo-1761058239730-ba39b530450d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHw0fHxtaW5pbWFsaXN0JTIwYWJzdHJhY3QlMjAzZCUyMHNoYXBlcyUyMHNvZnQlMjBwYXN0ZWwlMjBjb2xvcnN8ZW58MHx8fHwxNzY3Mjg0NTA4fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Abstract pastel shapes with ribbon for success states"
+      }
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Implement the 'Soft Utility' theme: Clean, white backgrounds with soft pastel accents for categories.",
+    "Use the 'Manrope' font for all headings to give it a modern, friendly character.",
+    "For the Monthly Control page, create a custom grid that feels like a spreadsheet but looks like a modern app. Use 'flushed' inputs (border-bottom only) to reduce visual noise.",
+    "Ensure the 16 categories are color-coded using the provided palette.",
+    "Use Recharts for all data visualization. Keep charts clean: remove grid lines, use soft tooltips.",
+    "Add 'data-testid' to all interactive elements.",
+    "Do NOT use gradients for backgrounds. Keep it flat and clean.",
+    "Use the provided image URLs for empty states or the dashboard header."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Avoid generic 'AI slop' designs. Be bold with whitespace.",
+    "Do not use 'transition: all'. Animate specific properties.",
+    "Use 'sonner' for toasts.",
+    "Prioritize Shadcn components but customize them to match the 'Soft Utility' theme (softer radii, lighter borders).",
+    "Ensure all text has sufficient contrast (APCA/WCAG AA)."
+  ]
+}
