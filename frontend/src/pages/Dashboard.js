@@ -50,8 +50,8 @@ const Dashboard = () => {
   const monthlyData = summary?.monthly_summary
     ? Object.entries(summary.monthly_summary).map(([month, data]) => ({
         month: format(new Date(currentYear, parseInt(month) - 1), 'MMM', { locale: ptBR }),
-        planejado: data.planned,
-        realizado: data.actual
+        planejado: parseFloat(data.planned.toFixed(2)),
+        realizado: parseFloat(data.actual.toFixed(2))
       }))
     : [];
 
