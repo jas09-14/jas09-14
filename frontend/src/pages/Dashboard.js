@@ -79,11 +79,18 @@ const Dashboard = () => {
       bg: 'bg-green-50'
     },
     {
-      title: 'Diferença',
-      value: `R$ ${Math.abs((summary?.total_planned || 0) - (summary?.total_actual || 0)).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-      icon: (summary?.total_actual || 0) > (summary?.total_planned || 0) ? TrendingUp : TrendingDown,
-      color: (summary?.total_actual || 0) > (summary?.total_planned || 0) ? 'text-red-600' : 'text-green-600',
-      bg: (summary?.total_actual || 0) > (summary?.total_planned || 0) ? 'bg-red-50' : 'bg-green-50'
+      title: 'Total Receitas',
+      value: `R$ ${(summary?.total_income || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      icon: TrendingUp,
+      color: 'text-emerald-600',
+      bg: 'bg-emerald-50'
+    },
+    {
+      title: 'Saldo Anual',
+      value: `R$ ${Math.abs((summary?.balance || 0)).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+      icon: (summary?.balance || 0) >= 0 ? TrendingUp : TrendingDown,
+      color: (summary?.balance || 0) >= 0 ? 'text-green-600' : 'text-red-600',
+      bg: (summary?.balance || 0) >= 0 ? 'bg-green-50' : 'bg-red-50'
     }
   ];
 
