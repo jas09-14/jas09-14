@@ -227,7 +227,7 @@ const Incomes = () => {
             <div className="flex justify-between items-center">
               <span className="text-base font-semibold text-foreground">TOTAL DO MÊS</span>
               <span className="text-xl font-semibold font-mono text-green-600">
-                R$ {getTotalIncome().toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                {formatBRL(getTotalIncome())}
               </span>
             </div>
           </div>
