@@ -80,8 +80,8 @@ const Reports = () => {
         .sort((a, b) => b.actual - a.actual)
         .map(cat => ({
           name: cat.name.length > 15 ? cat.name.substring(0, 15) + '...' : cat.name,
-          planejado: cat.planned,
-          realizado: cat.actual
+          planejado: parseFloat(cat.planned.toFixed(2)),
+          realizado: parseFloat(cat.actual.toFixed(2))
         }))
     : [];
 
