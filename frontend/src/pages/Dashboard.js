@@ -121,7 +121,7 @@ const Dashboard = () => {
               <p className="text-sm font-medium text-muted-foreground uppercase">Receitas</p>
             </div>
             <p className="text-2xl font-semibold font-mono text-green-600">
-              R$ {currentMonthData.income.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              {formatBRL(currentMonthData.income)}
             </p>
           </div>
 
@@ -131,7 +131,7 @@ const Dashboard = () => {
               <p className="text-sm font-medium text-muted-foreground uppercase">Despesas</p>
             </div>
             <p className="text-2xl font-semibold font-mono text-red-600">
-              R$ {currentMonthData.actual.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              {formatBRL(currentMonthData.actual)}
             </p>
           </div>
 
@@ -141,7 +141,7 @@ const Dashboard = () => {
               <p className="text-sm font-medium text-muted-foreground uppercase">Saldo</p>
             </div>
             <p className={`text-2xl font-semibold font-mono ${currentMonthData.balance >= 0 ? 'text-emerald-600' : 'text-orange-600'}`}>
-              {currentMonthData.balance >= 0 ? '+' : '-'} R$ {Math.abs(currentMonthData.balance).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+              {currentMonthData.balance >= 0 ? '+' : '-'} {formatBRL(Math.abs(currentMonthData.balance))}
             </p>
           </div>
         </div>
