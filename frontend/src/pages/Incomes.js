@@ -189,39 +189,36 @@ const Incomes = () => {
           <div>
             <label className="block text-sm font-medium text-foreground mb-2">Aposentadoria</label>
             <input
-              type="number"
-              step="0.01"
-              value={monthData.aposentadoria || ''}
+              type="text"
+              value={monthData.aposentadoria ? formatCurrency(monthData.aposentadoria) : ''}
               onChange={(e) => handleValueChange('aposentadoria', e.target.value)}
               data-testid="aposentadoria-input"
               className="w-full text-right bg-transparent border-b border-border focus:border-primary focus:outline-none px-2 py-2 font-mono text-lg text-foreground transition-colors"
-              placeholder="0.00"
+              placeholder="0,00"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-2">Salário</label>
             <input
-              type="number"
-              step="0.01"
-              value={monthData.salario || ''}
+              type="text"
+              value={monthData.salario ? formatCurrency(monthData.salario) : ''}
               onChange={(e) => handleValueChange('salario', e.target.value)}
               data-testid="salario-input"
               className="w-full text-right bg-transparent border-b border-border focus:border-primary focus:outline-none px-2 py-2 font-mono text-lg text-foreground transition-colors"
-              placeholder="0.00"
+              placeholder="0,00"
             />
           </div>
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-2">Recursos Externos</label>
             <input
-              type="number"
-              step="0.01"
-              value={monthData.recursos_externos || ''}
+              type="text"
+              value={monthData.recursos_externos ? formatCurrency(monthData.recursos_externos) : ''}
               onChange={(e) => handleValueChange('recursos_externos', e.target.value)}
               data-testid="recursos-externos-input"
               className="w-full text-right bg-transparent border-b border-border focus:border-primary focus:outline-none px-2 py-2 font-mono text-lg text-foreground transition-colors"
-              placeholder="0.00"
+              placeholder="0,00"
             />
           </div>
 
