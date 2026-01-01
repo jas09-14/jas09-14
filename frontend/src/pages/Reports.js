@@ -181,19 +181,19 @@ const Reports = () => {
             <div className="flex justify-between items-center py-2 border-b border-border/50">
               <span className="text-muted-foreground">Média Planejada</span>
               <span className="font-mono font-semibold text-foreground">
-                R$ {((summary?.total_planned || 0) / 12).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                {formatBRL((summary?.total_planned || 0) / 12)}
               </span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-border/50">
               <span className="text-muted-foreground">Média Realizada</span>
               <span className="font-mono font-semibold text-foreground">
-                R$ {((summary?.total_actual || 0) / 12).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                {formatBRL((summary?.total_actual || 0) / 12)}
               </span>
             </div>
             <div className="flex justify-between items-center py-2">
               <span className="text-muted-foreground">Variação Média</span>
               <span className="font-mono font-semibold text-muted-foreground">
-                R$ {(Math.abs((summary?.total_planned || 0) - (summary?.total_actual || 0)) / 12).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                {formatBRL((Math.abs((summary?.total_planned || 0) - (summary?.total_actual || 0)) / 12))}
               </span>
             </div>
           </div>
